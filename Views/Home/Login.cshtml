@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .errorMsg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+        @model LoginUser
+        <a style="float: right;" href="/">Register</a>
+        <div class="container center-align">
+            <h1 class="blue-text">Login to this cool site!</h1>
+            <form class="left-align" asp-action="login" asp-controller="Home" method="post">
+
+                <br>
+                <span class="errorMsg" asp-validation-for="Email"></span>
+                <br>
+                <label asp-for="Email"></label>
+                <input asp-for="Email">
+                <br>
+
+                <br>
+                <span class="errorMsg" asp-validation-for="Password"></span>
+                <br>
+                <label asp-for="Password"></label>
+                <input asp-for="Password">
+                <br>
+
+                <br>
+                <input class="btn blue" type="submit" value="Sign In">
+            </form>
+        </div>
+        
+</body>
+</html>
