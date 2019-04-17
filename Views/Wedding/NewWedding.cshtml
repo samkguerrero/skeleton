@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .errorMsg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a style="float: right; margin-left: 25px" href="/logout">Logout</a>
+    <a style="float: right;" href="/dashboard">Dashboard</a>
+    <h3>Plan Your Wedding</h3>
+    @model Wedding
+    <form asp-action="NewWedding" asp-controller="Wedding" method="post">
+        <br>
+        <span class="errorMsg" asp-validation-for="WedderOne"></span>
+        <br>
+        <label asp-for="WedderOne"></label>
+        <input asp-for="WedderOne">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="WedderTwo"></span>
+        <br>
+        <label asp-for="WedderTwo"></label>
+        <input asp-for="WedderTwo">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Date"></span>
+        <br>
+        <label asp-for="Date"></label>
+        <input type="date" asp-for="Date">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="WeddingAddress"></span>
+        <br>
+        <label asp-for="WeddingAddress"></label>
+        <input asp-for="WeddingAddress">
+        <br>
+
+        <br>
+        <input class="btn" type="submit" value="create">
+    </form>
+
+</body>
+</html>

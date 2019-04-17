@@ -23,7 +23,8 @@ namespace LoginRegistration.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            LoginUserUser newLoginUserUser = new LoginUserUser();
+            return View(newLoginUserUser);
         }
 
         [Route("signup")]
@@ -41,7 +42,8 @@ namespace LoginRegistration.Controllers
                 if(dbContext.Users.Any(u => u.Email == newUser.Email)) 
                 {
                     ModelState.AddModelError("Email", "Email already in use!");
-                    return View("Index");
+                    LoginUserUser newLoginUserUser = new LoginUserUser();
+                    return View("Index",newLoginUserUser);
                 } 
                 else
                 {
@@ -56,21 +58,16 @@ namespace LoginRegistration.Controllers
             }
             else 
             {
-                return View("Index");
+                LoginUserUser newLoginUserUser = new LoginUserUser();
+                return View("Index",newLoginUserUser);
             }
-        }
-
-        [Route("login")]
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View();
         }
 
         [Route("login")]
         [HttpPost]
         public IActionResult Login(LoginUser loginAttempt)
         {
+            LoginUserUser newLoginUserUser = new LoginUserUser();
             if(ModelState.IsValid)
             {
                 // System.Console.WriteLine("This is the user loggin in");
@@ -80,7 +77,7 @@ namespace LoginRegistration.Controllers
                 if (userInDb == null) 
                 {
                     ModelState.AddModelError("Email", "Invalid Email");
-                    return View("Login");
+                    return View("Index",newLoginUserUser);
                 }
 
                 var hasher = new PasswordHasher<LoginUser>();
@@ -90,7 +87,7 @@ namespace LoginRegistration.Controllers
                 if(result == 0) 
                 {
                     ModelState.AddModelError("Password", "Invalid Password");
-                    return View("Login");
+                    return View("Index",newLoginUserUser);
                 }
                 else 
                 {
@@ -101,7 +98,7 @@ namespace LoginRegistration.Controllers
             }
             else 
             {
-                return View("Login");
+                return View("Index", newLoginUserUser);
             }
         }
 
@@ -119,7 +116,7 @@ namespace LoginRegistration.Controllers
         {
             if(HttpContext.Session.GetInt32("UserLoggedIn") != null)
             {
-                return View();
+                return RedirectToAction("Dashboard", "Wedding");
             } 
             else 
             {
@@ -127,7 +124,5 @@ namespace LoginRegistration.Controllers
             }
             
         }
-
-
     }
 }

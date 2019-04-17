@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+@model Dashboard
+<body>
+    <a style="float: right;" href="logout">Logout</a>
+    <h3>Welcome to the Wedding Planner</h3>
+    <table class="table">
+        <thead>
+            <th>Wedding</th>
+            <th>Date</th>
+            <th>Guest</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            @{
+                foreach(var wedding in @Model.Weddings)
+                {
+                    <tr>
+                        <td><a href="/dashboard/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                        <td>@wedding.Date.ToString("MMM dd yyyy")</td>
+                        <td>@wedding.Users.Count</td>
+                        <td>
+                            @{
+                                if(@Model.UserLoggedIn.UserId == @wedding.Creator) 
+                                {
+                                    <a href="/deletewedding/@wedding.WeddingId">Delete</a>
+                                }
+                                else 
+                                {
+                                    bool attending = false;
+                                    foreach(var user in @wedding.Users) 
+                                    {
+                                        if (user.UserId == @Model.UserLoggedIn.UserId) 
+                                        {
+                                            attending = true;
+                                        }
+                                    }
+                                    if (attending) 
+                                    {
+                                        <a href="/unrsvp/@wedding.WeddingId">Un-RSVP</a>
+                                    } 
+                                    else 
+                                    {
+                                        <a href="/rsvp/@wedding.WeddingId">RSVP</a>
+                                    }
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br>
+    <a class="btn" href="dashboard/new">New Wedding</a>
+</body>
+</html>

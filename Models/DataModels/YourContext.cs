@@ -8,5 +8,7 @@ namespace LoginRegistration.Models
         public MyContext(DbContextOptions options) : base(options) { }
 
         public DbSet<User> Users {get;set;}
+        public DbSet<Wedding> Weddings {get;set;}
+        public DbSet<Guest> Guests {get;set;}
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace LoginRegistration.Models
 {
@@ -29,6 +30,8 @@ namespace LoginRegistration.Models
         [DataType(DataType.Password)]
         [Display(Name="Password")]
         public string Password {get;set;}
+
+        public List<Guest> Weddings {get;set;}
 
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;

@@ -1,0 +1,43 @@
+@model User
+<div class="container center-align">
+    <h1 class="blue-text">Register</h1>
+    <form class="left-align" asp-action="signup" asp-controller="Home" method="post">
+        <br>
+        <span class="errorMsg" asp-validation-for="Fname"></span>
+        <br>
+        <label asp-for="Fname"></label>
+        <input asp-for="Fname">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Lname"></span>
+        <br>
+        <label asp-for="Lname"></label>
+        <input asp-for="Lname">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Email"></span>
+        <br>
+        <label asp-for="Email"></label>
+        <input asp-for="Email">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Password"></span>
+        <br>
+        <label asp-for="Password"></label>
+        <input asp-for="Password">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="ConfirmPassword"></span>
+        <br>
+        <label asp-for="ConfirmPassword"></label>
+        <input asp-for="ConfirmPassword">
+        <br>
+
+        <br>
+        <input class="btn blue" type="submit" value="Register">
+    </form>
+</div>

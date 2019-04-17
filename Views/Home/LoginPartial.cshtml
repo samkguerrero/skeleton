@@ -1,0 +1,23 @@
+@model LoginUser
+<div class="container center-align">
+    <h1 class="blue-text">Login</h1>
+    <form class="left-align" asp-action="login" asp-controller="Home" method="post">
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Email"></span>
+        <br>
+        <label asp-for="Email"></label>
+        <input asp-for="Email">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Password"></span>
+        <br>
+        <label asp-for="Password"></label>
+        <input asp-for="Password">
+        <br>
+
+        <br>
+        <input class="btn blue" type="submit" value="Log In">
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .errorMsg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    @model Wedding
+    <a style="float: right; margin-left: 25px" href="/logout">Logout</a>
+    <a style="float: right;" href="/dashboard">Dashboard</a>
+    <h3>@Model.WedderOne and @Model.WedderTwo's Wedding</h3>
+    <p>Date: @Model.Date</p>
+    <p>Guests: </p>
+    <ol>
+        @{
+            foreach(var userInWedding in @Model.Users) 
+            {
+                <li>@userInWedding.User.Fname @userInWedding.User.Lname</li>
+            }
+        }
+    </ol>
+
+
+</body>
+</html>
