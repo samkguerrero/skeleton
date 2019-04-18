@@ -1,16 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
 
 namespace LoginRegistration.Models
 {
-    public class Wedding
+    public class NewThing
     {
-        [Key]
-        public int WeddingId {get;set;}
-
-        public int Creator {get;set;}
 
         [Required]
         [MinLength(2)]
@@ -29,11 +24,6 @@ namespace LoginRegistration.Models
         [Required]
         [Display(Name="Wedding Address")]
         public string WeddingAddress {get;set;}
-
-        public List<Guest> Users {get;set;}
-
-        public DateTime CreatedAt {get;set;} = DateTime.Now;
-        public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     }
 }

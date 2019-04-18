@@ -7,35 +7,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
-@model Dashboard
+@model DashboardThingsAndAdd
 <body>
+
     <a style="float: right;" href="logout">Logout</a>
-    <h3>Welcome to the Wedding Planner</h3>
+    
+    <partial name="NewThingPartial" model="@Model.Thing" />
+    
+    <h3>Welcome to THINGS</h3>
     <table class="table">
         <thead>
-            <th>Wedding</th>
+            <th>Name</th>
             <th>Date</th>
-            <th>Guest</th>
+            <th>Users</th>
             <th>Action</th>
         </thead>
         <tbody>
             @{
-                foreach(var wedding in @Model.Weddings)
+                foreach(var thing in @Model.Things.OrderByDescending(t => t.Name))
                 {
                     <tr>
-                        <td><a href="/dashboard/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
-                        <td>@wedding.Date.ToString("MMM dd yyyy")</td>
-                        <td>@wedding.Users.Count</td>
+                        <td><a href="/dashboard/@thing.ThingId">@thing.Name</a></td>
+                        <td>@thing.Date.ToString("MMM dd yyyy")</td>
+                        <td>@thing.Users.Count</td>
                         <td>
                             @{
-                                if(@Model.UserLoggedIn.UserId == @wedding.Creator) 
+                                if(@Model.UserLoggedIn.UserId == @thing.Creator) 
                                 {
-                                    <a href="/deletewedding/@wedding.WeddingId">Delete</a>
+                                    <a href="/deletething/@thing.ThingId">Delete</a>
                                 }
                                 else 
                                 {
                                     bool attending = false;
-                                    foreach(var user in @wedding.Users) 
+                                    foreach(var user in @thing.Users) 
                                     {
                                         if (user.UserId == @Model.UserLoggedIn.UserId) 
                                         {
@@ -44,11 +48,11 @@
                                     }
                                     if (attending) 
                                     {
-                                        <a href="/unrsvp/@wedding.WeddingId">Un-RSVP</a>
+                                        <a href="/uncombineuserthing/@thing.ThingId">Un-RSVP</a>
                                     } 
                                     else 
                                     {
-                                        <a href="/rsvp/@wedding.WeddingId">RSVP</a>
+                                        <a href="/combineuserthing/@thing.ThingId">RSVP</a>
                                     }
                                 }
                             }
@@ -59,6 +63,6 @@
         </tbody>
     </table>
     <br>
-    <a class="btn" href="dashboard/new">New Wedding</a>
+    <a class="btn" href="dashboard/new">New Thing</a>
 </body>
 </html>

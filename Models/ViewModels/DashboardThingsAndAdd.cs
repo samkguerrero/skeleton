@@ -5,10 +5,11 @@ using System.Collections.Generic;
 
 namespace LoginRegistration.Models
 {
-    public class Dashboard
+    public class DashboardThingsAndAdd
     {
         public User UserLoggedIn {get;set;}
         public List<Thing> Things {get;set;}
+        public Thing Thing {get;set;}
 
     }
 }

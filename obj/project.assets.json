@@ -11582,11 +11582,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/samguerrero/Dropbox/codo/csharp/orms/weddingplanner/LoginRegistration/LoginRegistration.csproj",
+      "projectUniqueName": "/Users/samguerrero/Dropbox/codo/csharp/orms/skeleton/LoginRegistration/LoginRegistration.csproj",
       "projectName": "LoginRegistration",
-      "projectPath": "/Users/samguerrero/Dropbox/codo/csharp/orms/weddingplanner/LoginRegistration/LoginRegistration.csproj",
+      "projectPath": "/Users/samguerrero/Dropbox/codo/csharp/orms/skeleton/LoginRegistration/LoginRegistration.csproj",
       "packagesPath": "/Users/samguerrero/.nuget/packages/",
-      "outputPath": "/Users/samguerrero/Dropbox/codo/csharp/orms/weddingplanner/LoginRegistration/obj/",
+      "outputPath": "/Users/samguerrero/Dropbox/codo/csharp/orms/skeleton/LoginRegistration/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

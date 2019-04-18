@@ -31,7 +31,7 @@ namespace LoginRegistration.Models
         [Display(Name="Password")]
         public string Password {get;set;}
 
-        public List<Guest> Weddings {get;set;}
+        public List<Association> Things {get;set;}
 
         public DateTime CreatedAt {get;set;} = DateTime.Now;
         public DateTime UpdatedAt {get;set;} = DateTime.Now;

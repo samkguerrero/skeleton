@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 namespace LoginRegistration.Models
 {
-    public class Guest
+    public class Association
     {
         [Key]
-        public int GuestId {get;set;}
+        public int AssociationId {get;set;}
         public int UserId {get;set;}
-        public int WeddingId {get;set;}
+        public int ThingId {get;set;}
         public User User {get;set;}
-        public Wedding Wedding {get;set;}
+        public Thing Thing {get;set;}
     }
 }

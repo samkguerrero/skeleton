@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .errorMsg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a style="float: right; margin-left: 25px" href="/logout">Logout</a>
+    <a style="float: right; margin-left: 25px" href="/dashboard">Dashboard</a>
+    <a style="float: right;" href="/dashboard/@Model.ThingId">View</a>
+    <h3>Edit THING</h3>
+    @model Thing
+    <form asp-action="EditThing" asp-controller="Thing" method="post">
+        <br>
+        <span class="errorMsg" asp-validation-for="Name"></span>
+        <br>
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+        <br>
+
+        <br>
+        <span class="errorMsg" asp-validation-for="Date"></span>
+        <br>
+        <label asp-for="Date"></label>
+        <input type="date" asp-for="Date">
+        <br>
+
+        <br>
+        <input class="btn" type="submit" value="Save Changes">
+    </form>
+
+</body>
+</html>

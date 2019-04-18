@@ -33,12 +33,6 @@ namespace LoginRegistration.Controllers
         {
             if(ModelState.IsValid) 
             {
-                // System.Console.WriteLine("This is the new user coming in");
-                // System.Console.WriteLine(newUser.Fname);
-                // System.Console.WriteLine(newUser.Lname);
-                // System.Console.WriteLine(newUser.Email);
-                // System.Console.WriteLine(newUser.Password);
-                // System.Console.WriteLine(newUser.ConfirmPassword);
                 if(dbContext.Users.Any(u => u.Email == newUser.Email)) 
                 {
                     ModelState.AddModelError("Email", "Email already in use!");
@@ -70,9 +64,6 @@ namespace LoginRegistration.Controllers
             LoginUserUser newLoginUserUser = new LoginUserUser();
             if(ModelState.IsValid)
             {
-                // System.Console.WriteLine("This is the user loggin in");
-                // System.Console.WriteLine(loginAttempt.Email);
-                // System.Console.WriteLine(loginAttempt.Password);
                 var userInDb = dbContext.Users.FirstOrDefault(u => u.Email == loginAttempt.Email);
                 if (userInDb == null) 
                 {
@@ -114,15 +105,11 @@ namespace LoginRegistration.Controllers
         [HttpGet]
         public IActionResult Success()
         {
-            if(HttpContext.Session.GetInt32("UserLoggedIn") != null)
-            {
-                return RedirectToAction("Dashboard", "Wedding");
-            } 
-            else 
+            if(HttpContext.Session.GetInt32("UserLoggedIn") == null)
             {
                 return RedirectToAction("Index");
-            }
-            
+            } 
+            return RedirectToAction("Dashboard", "Thing");
         }
     }
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+@model Dashboard
+<body>
+    <a style="float: right;" href="logout">Logout</a>
+    <h3>Welcome to THINGS</h3>
+    <table class="table">
+        <thead>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Users</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            @{
+                foreach(var thing in @Model.Things.OrderByDescending(t => t.Name))
+                {
+                    <tr>
+                        <td><a href="/dashboard/@thing.ThingId">@thing.Name</a></td>
+                        <td>@thing.Date.ToString("MMM dd yyyy")</td>
+                        <td>@thing.Users.Count</td>
+                        <td>
+                            @{
+                                if(@Model.UserLoggedIn.UserId == @thing.Creator) 
+                                {
+                                    <a href="/deletething/@thing.ThingId">Delete</a>
+                                }
+                                else 
+                                {
+                                    bool attending = false;
+                                    foreach(var user in @thing.Users) 
+                                    {
+                                        if (user.UserId == @Model.UserLoggedIn.UserId) 
+                                        {
+                                            attending = true;
+                                        }
+                                    }
+                                    if (attending) 
+                                    {
+                                        <a href="/uncombineuserthing/@thing.ThingId">Un-RSVP</a>
+                                    } 
+                                    else 
+                                    {
+                                        <a href="/combineuserthing/@thing.ThingId">RSVP</a>
+                                    }
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <br>
+    <a class="btn" href="dashboard/new">New Thing</a>
+</body>
+</html>
