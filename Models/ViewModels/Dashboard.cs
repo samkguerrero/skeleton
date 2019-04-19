@@ -10,5 +10,7 @@ namespace LoginRegistration.Models
         public User UserLoggedIn {get;set;}
         public List<Thing> Things {get;set;}
 
+        public List<User> AllUsers {get;set;}
+
     }
 }

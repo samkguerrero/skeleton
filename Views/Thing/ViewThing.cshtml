@@ -11,23 +11,46 @@
     @model Thing
     <a style="float: right; margin-left: 25px" href="/logout">Logout</a>
     <a style="float: right; margin-left: 25px" href="/dashboard">Dashboard</a>
+
     @{
-        if(@ViewBag.LoggedInUser == @Model.Creator) 
+        if(ViewBag.LoggedInUser == @Model.Creator) 
         {
-            <a style="float: right;" href="/dashboard/@Model.ThingId/edit">Edit</a>
+            <a class="btn" href="/deletething/@Model.ThingId">Delete</a>
+        }
+        else
+        {
+            bool attending = false;
+            foreach(var user in @Model.Users) 
+            {
+                if (user.UserId == ViewBag.LoggedInUser) 
+                {
+                    attending = true;
+                }
+            }
+            if (attending) 
+            {
+                <a class="btn" href="/uncombineuserthing/@Model.ThingId">Leave</a>
+            } 
+            else 
+            {
+                <a class="btn" href="/combineuserthing/@Model.ThingId">Join</a>
+            }
         }
     }
-    <h3>@Model.Name THING</h3>
-    <p>Date: @Model.Date</p>
-    <p>Guests: </p>
-    <ol>
+
+    <h3>@Model.Name</h3>
+    <p>Event Coordinator: @ViewBag.CreatorsName</p>
+    <p>Description: </p>
+    <p>@Model.Description</p>
+    <p>Participants: </p>
+    <ul>
         @{
             foreach(var userInThing in @Model.Users) 
             {
-                <li>@userInThing.User.Fname @userInThing.User.Lname</li>
+                <li>@userInThing.User.Fname</li>
             }
         }
-    </ol>
+    </ul>
 
 </body>
 </html>

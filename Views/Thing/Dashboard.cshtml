@@ -10,50 +10,122 @@
 @model Dashboard
 <body>
     <a style="float: right;" href="logout">Logout</a>
-    <h3>Welcome to THINGS</h3>
+    <p style="float: right; margin-right: 25px;">Welcome, @Model.UserLoggedIn.Fname</p>
+    <h3>Dojo Activity Center</h3>
+    <hr>
     <table class="table">
         <thead>
-            <th>Name</th>
-            <th>Date</th>
-            <th>Users</th>
-            <th>Action</th>
+            <th>Activity</th>
+            <th>Date and Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator</th>
+            <th>No of Participants</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             @{
-                foreach(var thing in @Model.Things.OrderByDescending(t => t.Name))
+                foreach(var thing in @Model.Things.OrderByDescending(t => t.Date))
                 {
-                    <tr>
-                        <td><a href="/dashboard/@thing.ThingId">@thing.Name</a></td>
-                        <td>@thing.Date.ToString("MMM dd yyyy")</td>
-                        <td>@thing.Users.Count</td>
-                        <td>
-                            @{
-                                if(@Model.UserLoggedIn.UserId == @thing.Creator) 
-                                {
-                                    <a href="/deletething/@thing.ThingId">Delete</a>
-                                }
-                                else 
-                                {
-                                    bool attending = false;
-                                    foreach(var user in @thing.Users) 
+                    if (@DateTime.Now < @thing.Date) {
+                    //if (2 > 1) {
+                        <tr>
+                            <td><a href="/dashboard/@thing.ThingId">@thing.Name</a></td>
+                            <td>@thing.Date.ToString("MM/dd") @thing.Time.ToString("@ h:mm tt")</td>
+                                @{
+                                    if(Int32.Parse(@thing.DurationType) == 1440) 
                                     {
-                                        if (user.UserId == @Model.UserLoggedIn.UserId) 
+                                        <td>@thing.Duration Days</td>
+                                    }
+                                    if(Int32.Parse(@thing.DurationType) == 1) 
+                                    {
+                                        <td>@thing.Duration Minutes</td>
+                                    }
+                                    if(Int32.Parse(@thing.DurationType) == 60) 
+                                    {
+                                        <td>@thing.Duration Hours</td>
+                                    }
+                                }
+                            <td>
+                                @{
+                                    foreach (var x in @Model.AllUsers) 
+                                    {
+                                        if (@x.UserId == @thing.Creator) 
                                         {
-                                            attending = true;
+                                            @x.Fname;
                                         }
                                     }
-                                    if (attending) 
+                                }
+
+                            </td>
+                            <td>@thing.Users.Count</td>
+                            <td>
+                                @{
+                                    if(@Model.UserLoggedIn.UserId == @thing.Creator) 
                                     {
-                                        <a href="/uncombineuserthing/@thing.ThingId">Un-RSVP</a>
-                                    } 
+                                        <a href="/deletething/@thing.ThingId">Delete</a>
+                                    }
                                     else 
                                     {
-                                        <a href="/combineuserthing/@thing.ThingId">RSVP</a>
+                                        bool attending = false;
+                                        foreach(var user in @thing.Users) 
+                                        {
+                                            if (user.UserId == @Model.UserLoggedIn.UserId) 
+                                            {
+                                                attending = true;
+                                            }
+                                        }
+                                        if (attending) 
+                                        {
+                                            <a href="/uncombineuserthing/@thing.ThingId">Leave</a>
+                                        } 
+                                        else 
+                                        {
+                                            if (@Model.UserLoggedIn.Things == null)
+                                            {
+                                                <a href="/combineuserthing/@thing.ThingId">Join</a>
+                                            }
+                                            else 
+                                            {
+                                                var conflict = false;
+
+                                                var interestedeventend = @thing.Date.AddTicks(@thing.Time.TimeOfDay.Ticks).AddMinutes(@thing.Duration * Int32.Parse(@thing.DurationType));
+                                                var interestedeventstart = @thing.Date.AddTicks(@thing.Time.TimeOfDay.Ticks);
+
+                                                foreach(var v in @Model.UserLoggedIn.Things) 
+                                                {
+                                                    var eventattendingend = @v.Thing.Date.AddTicks(@v.Thing.Time.TimeOfDay.Ticks).AddMinutes(@v.Thing.Duration * Int32.Parse(@v.Thing.DurationType));
+                                                    var eventattendingstart = @v.Thing.Date.AddTicks(@v.Thing.Time.TimeOfDay.Ticks);
+
+                                                    if(interestedeventstart >= eventattendingend) 
+                                                    {
+                                                        conflict = false;
+                                                    } 
+                                                    else if (interestedeventend <= eventattendingstart)
+                                                    {
+                                                        conflict = false;
+                                                    } 
+                                                    else 
+                                                    {
+                                                        conflict = true;
+                                                    }
+                                                }
+
+                                                if(conflict == true) 
+                                                {
+                                                    <p>Conflict</p>
+                                                }
+                                                else 
+                                                {
+                                                    <a href="/combineuserthing/@thing.ThingId">Join</a>
+                                                }                                                
+                                            }
+
+                                        }
                                     }
                                 }
-                            }
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                    }
                 }
             }
         </tbody>

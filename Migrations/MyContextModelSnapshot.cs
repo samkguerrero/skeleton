@@ -46,8 +46,18 @@ namespace LoginRegistration.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<int>("Duration");
+
+                    b.Property<string>("DurationType")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<DateTime>("Time");
 
                     b.Property<DateTime>("UpdatedAt");
 
@@ -69,8 +79,7 @@ namespace LoginRegistration.Migrations
                     b.Property<string>("Fname")
                         .IsRequired();
 
-                    b.Property<string>("Lname")
-                        .IsRequired();
+                    b.Property<string>("Lname");
 
                     b.Property<string>("Password")
                         .IsRequired();

@@ -17,6 +17,10 @@ namespace LoginRegistration.Migrations
                     Creator = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
+                    Time = table.Column<DateTime>(nullable: false),
+                    Duration = table.Column<int>(nullable: false),
+                    DurationType = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false)
                 },
@@ -32,7 +36,7 @@ namespace LoginRegistration.Migrations
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Fname = table.Column<string>(nullable: false),
-                    Lname = table.Column<string>(nullable: false),
+                    Lname = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),

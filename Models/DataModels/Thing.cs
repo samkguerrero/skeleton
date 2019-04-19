@@ -30,13 +30,30 @@ namespace LoginRegistration.Models
 
         [Required]
         [MinLength(2)]
-        [Display(Name="Name")]
+        [Display(Name="Title")]
         public string Name {get;set;}
 
         [Required]
-        [OldEnough]
         [Display(Name="Date")]
         public DateTime Date {get;set;}
+
+        [Required]
+        [Display(Name="Time")]
+        public DateTime Time {get;set;}
+
+        [Required]
+        [Display(Name="Duration")]
+        public int Duration {get;set;}
+
+        [Required]
+        [Display(Name="Duration")]
+        public string DurationType {get;set;}
+
+        [Required]
+        [Display(Name="Description")]
+        public string Description {get;set;}
+
+        //
 
         public List<Association> Users {get;set;}
 

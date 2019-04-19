@@ -36,6 +36,16 @@ namespace LoginRegistration.Controllers
             User userLoggedIn = dbContext.Users
                 .FirstOrDefault(user => user.UserId == (int)(HttpContext.Session.GetInt32("UserLoggedIn")));
             myDashboard.UserLoggedIn = userLoggedIn;
+
+            List<User> allUsers = dbContext.Users.ToList();
+            myDashboard.AllUsers = allUsers;
+
+            // if (userLoggedIn.Things == null) {
+            //     System.Console.WriteLine("YES");
+            // } else {
+            //     System.Console.WriteLine("not null");
+            // }
+            
             return View(myDashboard);
         }
 
@@ -75,6 +85,14 @@ namespace LoginRegistration.Controllers
         [HttpPost]
         public IActionResult NewThing(Thing newThing)
         {
+            // System.Console.WriteLine("newThing");
+            // System.Console.WriteLine(newThing.Name);
+            // System.Console.WriteLine(newThing.Date);
+            // System.Console.WriteLine(newThing.Time);
+            // System.Console.WriteLine(newThing.Duration);
+            // System.Console.WriteLine(newThing.DurationType);
+            // System.Console.WriteLine(newThing.Description);
+            // return View("NewThing");
             if(ModelState.IsValid) 
             {
                 newThing.Creator = (int)(HttpContext.Session.GetInt32("UserLoggedIn"));
@@ -101,6 +119,9 @@ namespace LoginRegistration.Controllers
                 .Include(thing => thing.Users)
                 .ThenInclude(association => association.User)
                 .FirstOrDefault(thing => thing.ThingId == thingid);
+            User userWhoCreatedFname = dbContext.Users
+                .FirstOrDefault(user => user.UserId == thingToView.Creator);
+            ViewBag.CreatorsName = userWhoCreatedFname.Fname;
             return View(thingToView);
         }
 
