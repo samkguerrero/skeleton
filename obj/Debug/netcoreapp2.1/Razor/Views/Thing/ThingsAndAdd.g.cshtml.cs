@@ -56,7 +56,7 @@ using LoginRegistration.Models;
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(23, 316, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "425dd7a536cc470390a0822b60b45376", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "113ac3fa5e5b47e98f0ca16900725e2d", async() => {
                 BeginContext(29, 303, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -82,12 +82,12 @@ using LoginRegistration.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(369, 2188, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f575bfbfe70f4e078d69acacf47a08df", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfa9da71fc85427ba1fcd59f21f1e4b2", async() => {
                 BeginContext(375, 65, true);
                 WriteLiteral("\n\n    <a style=\"float: right;\" href=\"logout\">Logout</a>\n    \n    ");
                 EndContext();
                 BeginContext(440, 55, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "57b05e4786af4e4c8c2a7cebd75ca37f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e19c6e49abd24a57a5bb658e7adcabdf", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

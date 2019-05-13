@@ -25,7 +25,7 @@ namespace LoginRegistration.Models
         public string Email {get;set;}
 
         [Required]
-        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage = "Password must contain atleast 1 uppercase 1 lowercase and 1 number")]
+        // [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage = "Password must contain atleast 1 uppercase 1 lowercase and 1 number")]
         [MinLength(8, ErrorMessage="Password must be 8 characters or longer!")]
         [DataType(DataType.Password)]
         [Display(Name="Password")]

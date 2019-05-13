@@ -1,20 +1,20 @@
 @model LoginUser
-<div class="container center-align">
+<div style="border-radius: 25px; padding: 0px 20px 20px 20px; background-color: rgb(255,245,157,0.8)"  class="container center-align">
+
     <h1 class="blue-text">Login</h1>
     <form class="left-align" asp-action="login" asp-controller="Home" method="post">
-
         <br>
         <span class="errorMsg" asp-validation-for="Email"></span>
         <br>
-        <label asp-for="Email"></label>
-        <input asp-for="Email">
+        <label class="blue-text" asp-for="Email"></label>
+        <input class="black-text" asp-for="Email">
         <br>
 
         <br>
         <span class="errorMsg" asp-validation-for="Password"></span>
         <br>
-        <label asp-for="Password"></label>
-        <input asp-for="Password">
+        <label class="blue-text" asp-for="Password"></label>
+        <input class="black-text" asp-for="Password">
         <br>
 
         <br>

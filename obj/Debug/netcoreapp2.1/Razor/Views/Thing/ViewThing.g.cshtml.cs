@@ -54,7 +54,7 @@ using LoginRegistration.Models;
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(23, 316, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "922bfd1213a74725be4a0309ae68055e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e5a40fb19e0841f7b2d9a7b361f5b9ba", async() => {
                 BeginContext(29, 303, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -80,7 +80,7 @@ using LoginRegistration.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(340, 1215, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ea5bfff1e35f44febce8dceb35551d43", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ca8bfaefd3545feb6ba296f9127a1e5", async() => {
                 BeginContext(346, 1, true);
                 WriteLiteral("\n");
                 EndContext();

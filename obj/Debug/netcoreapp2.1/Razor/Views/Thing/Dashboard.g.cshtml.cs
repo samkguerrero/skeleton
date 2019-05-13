@@ -54,7 +54,7 @@ using LoginRegistration.Models;
             WriteLiteral("<!DOCTYPE html>\n<html>\n");
             EndContext();
             BeginContext(23, 316, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5df10aaf743e41b3afac7dbd11151dbd", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd55fe3b4eeb4892bfe5beee35a0520f", async() => {
                 BeginContext(29, 303, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -80,7 +80,7 @@ using LoginRegistration.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(357, 6415, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f94b2ecfe5684c43927c6f89eab28a9b", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd214fb7e28a4e729f09110b57844406", async() => {
                 BeginContext(363, 113, true);
                 WriteLiteral("\n    <a style=\"float: right;\" href=\"logout\">Logout</a>\n    <p style=\"float: right; margin-right: 25px;\">Welcome, ");
                 EndContext();

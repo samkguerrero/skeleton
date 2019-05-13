@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
-<body>
+<body style="background-color: rgb(255,245,157,0.9)">
     @model Thing
     <a style="float: right; margin-left: 25px" href="/logout">Logout</a>
     <a style="float: right; margin-left: 25px" href="/dashboard">Dashboard</a>
@@ -38,19 +38,22 @@
         }
     }
 
-    <h3>@Model.Name</h3>
-    <p>Event Coordinator: @ViewBag.CreatorsName</p>
-    <p>Description: </p>
-    <p>@Model.Description</p>
-    <p>Participants: </p>
-    <ul>
-        @{
-            foreach(var userInThing in @Model.Users) 
-            {
-                <li>@userInThing.User.Fname</li>
+    <div style="padding: 50px;" class="card panel teal lighten-2">
+        <h3 style="color: rgb(255,245,157,1);">@Model.Name</h3>
+        <p style="color: rgb(255,245,157,1);">Event Coordinator </p>
+        <p>@ViewBag.CreatorsName</p>
+        <p style="color: rgb(255,245,157,1);">Description </p>
+        <p>@Model.Description</p>
+        <p style="color: rgb(255,245,157,1);">Participants </p>
+        <ul>
+            @{
+                foreach(var userInThing in @Model.Users) 
+                {
+                    <li>@userInThing.User.Fname</li>
+                }
             }
-        }
-    </ul>
+        </ul>
+    </div>
 
 </body>
 </html>
